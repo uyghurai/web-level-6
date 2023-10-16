@@ -58,6 +58,12 @@ body
     background-image: linear-gradient( 0deg, var( --bg-color ), var( --bg-color ) ), url( './img/bg.jpg' );
 }
 
+.headernav a{
+  
+    margin-right: 20px;
+  
+}
+
 /*
     Pokemon type colors
 */

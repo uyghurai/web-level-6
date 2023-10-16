@@ -1,0 +1,10 @@
+.about-container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.about-header{
+    margin-top: 20px;
+    
+}
