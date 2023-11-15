@@ -24,8 +24,9 @@ import {
 } from "@mui/icons-material";
 import HeaderText from './HeaderText';
 import PokemonListView from './PokemonListView';
+import { Link } from 'react-router-dom';
 
-const drawWidth = 220;
+const drawWidth = 240;
 
 export default function TryMui() {
     const [mobileViewOpen, setMobileViewOpen] = React.useState(false);
@@ -95,10 +96,10 @@ export default function TryMui() {
                     </ListItemIcon>
                     <ListItemText primary={"Media"} />
                 </ListItemButton>
-                <ListItemButton sx={{ color: "white" }}>
+                <ListItemButton component={Link} to="/about" sx={{ color: "white" }}>
                     <ListItemIcon sx={{ color: "white" }}>
                         {<Feedback />}</ListItemIcon>
-                    <ListItemText primary={"Contact us"} />
+                    <ListItemText primary={"About us"} />
                 </ListItemButton>
             </List>
 
