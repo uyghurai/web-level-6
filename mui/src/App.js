@@ -8,6 +8,7 @@ import About from './components/About';
 import DisplayByType from './components/DisplayByType';
 import TryMui from './components/TryMui';
 import MuiNew from './components/MuiNew';
+import DataView from './components/DataView';
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -20,8 +21,9 @@ import {
   Grass,
   LocalFireDepartment,
   WaterDrop,
-  Info
+  Info, TableChart
 } from "@mui/icons-material";
+import PokemonTable from './components/PokemonTable';
 
 const drawerWidth = 240;
 
@@ -62,6 +64,12 @@ function App() {
           </ListItemIcon>
           <ListItemText primary="Water Type" />
         </ListItemButton>
+        <ListItemButton component={Link} to="/pokemontable">
+          <ListItemIcon sx={{ color: "#F8C471" }}>
+            {<TableChart />}
+          </ListItemIcon>
+          <ListItemText primary="Pokemon Table" />
+        </ListItemButton>
         <ListItemButton component={Link} to="/about">
           <ListItemIcon sx={{ color: "#212121" }}>
             {<Info />}
@@ -77,6 +85,10 @@ function App() {
         <ListItemButton component={Link} to="/muinew">
           <ListItemText primary="New MUI" />
         </ListItemButton>
+        <ListItemButton component={Link} to="/dataview">
+          <ListItemText primary="Show Data" />
+        </ListItemButton>
+
       </List>
     </div>
   );
@@ -105,6 +117,8 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/trymui" element={<TryMui />} />
               <Route path="/muinew" element={<MuiNew />} />
+              <Route path="/dataview" element={<DataView />} />
+              <Route path="/pokemontable" element={<PokemonTable />} />
             </Routes>
           </div>
         </div>

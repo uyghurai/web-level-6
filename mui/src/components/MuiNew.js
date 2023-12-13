@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -14,7 +13,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { AirportShuttleRounded, Home, Agriculture } from '@mui/icons-material';
+import { AirportShuttleRounded, Home, Agriculture, Cancel } from '@mui/icons-material';
 
 
 
@@ -29,10 +28,12 @@ export default function MuiNew() {
     const responsive_drawer = (
         <div>
             <List>
-                <ListItemButton>
-                    <ListItemIcon>{<Home />}</ListItemIcon>
-                    <ListItemText primary={"Home Text"} />
-                </ListItemButton>
+                <ListItem>
+                    <ListItemButton>
+                        <ListItemIcon>{<Home />}</ListItemIcon>
+                        <ListItemText primary={"Home Text"} />
+                    </ListItemButton>
+                </ListItem>
             </List>
             <Divider />
             <List>
@@ -43,6 +44,10 @@ export default function MuiNew() {
                 <ListItemButton>
                     <ListItemIcon>{<Agriculture />}</ListItemIcon>
                     <ListItemText>Ticket</ListItemText>
+                </ListItemButton>
+                <ListItemButton>
+                    <ListItemIcon>{<Cancel />}</ListItemIcon>
+                    <ListItemText>Cancel</ListItemText>
                 </ListItemButton>
             </List>
         </div>
