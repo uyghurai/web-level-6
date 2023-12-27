@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { PokemonDataContext } from '../PokemonDataContext'
-import PokemonCard from './PokemonCard'
 import PokemonDetailsView from './PokemonDetailsView'
 import './PokemonListView.css'
+import PokemonCardMUI from './PokemonCardMUI'
 
 const PokemonListView = () => {
     const pokemonList = useContext(PokemonDataContext);
@@ -21,7 +21,8 @@ const PokemonListView = () => {
         <div className="pokedex-view">
             {
                 pokemonList.map((pokemon) => (
-                    <PokemonCard
+
+                    <PokemonCardMUI
                         key={pokemon.id}
                         pokemon={pokemon}
                         onClick={() => handleClick({ pokemon })}

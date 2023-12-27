@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { PokemonDataContext } from '../PokemonDataContext'
-import PokemonCard from './PokemonCard'
 import PokemonDetailsView from './PokemonDetailsView'
 import './PokemonListView.css'
+import PokemonCardMUI from './PokemonCardMUI'
 
 export default function DisplayByType({ displayType }) {
     const allPokemons = useContext(PokemonDataContext);
@@ -25,7 +25,7 @@ export default function DisplayByType({ displayType }) {
         <div className="pokedex-view">
             {
                 filteredTypePokemons.map((pokemon) => (
-                    <PokemonCard
+                    <PokemonCardMUI
                         key={pokemon.id}
                         pokemon={pokemon}
                         onClick={() => handleClick({ pokemon })}

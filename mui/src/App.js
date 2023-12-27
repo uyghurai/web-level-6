@@ -21,9 +21,11 @@ import {
   Grass,
   LocalFireDepartment,
   WaterDrop,
-  Info, TableChart
+  Info, TableChart, Favorite
 } from "@mui/icons-material";
 import PokemonTable from './components/PokemonTable';
+import { FavoritesProvider } from './FavoritesContext';
+import MyFavoritePokemons from './components/MyFavoritePokemons';
 
 const drawerWidth = 240;
 
@@ -70,6 +72,12 @@ function App() {
           </ListItemIcon>
           <ListItemText primary="Pokemon Table" />
         </ListItemButton>
+        <ListItemButton component={Link} to="/favoritepokemons">
+          <ListItemIcon sx={{ color: "#FF9800" }}>
+            {<Favorite />}
+          </ListItemIcon>
+          <ListItemText primary="Pokemon Table" />
+        </ListItemButton>
         <ListItemButton component={Link} to="/about">
           <ListItemIcon sx={{ color: "#212121" }}>
             {<Info />}
@@ -97,31 +105,34 @@ function App() {
   return (
     <Router>
       <PokemonDataContext.Provider value={pokemons}>
-        <div className="pokedex-app" style={{ display: 'flex' }}>
-          <Drawer
-            variant="permanent"
-            sx={{
-              width: drawerWidth,
-              flexShrink: 0,
-              [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-            }}
-          >
-            {drawer}
-          </Drawer>
-          <div style={{ width: `calc(100% - ${drawerWidth}px)` }}>
-            <Routes>
-              <Route path="/" element={<><HeaderText /><PokemonListView /></>} />
-              <Route path="/grasstype" element={<DisplayByType displayType="grass" />} />
-              <Route path="/firetype" element={<DisplayByType displayType="fire" />} />
-              <Route path="/watertype" element={<DisplayByType displayType="water" />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/trymui" element={<TryMui />} />
-              <Route path="/muinew" element={<MuiNew />} />
-              <Route path="/dataview" element={<DataView />} />
-              <Route path="/pokemontable" element={<PokemonTable />} />
-            </Routes>
+        <FavoritesProvider>
+          <div className="pokedex-app" style={{ display: 'flex' }}>
+            <Drawer
+              variant="permanent"
+              sx={{
+                width: drawerWidth,
+                flexShrink: 0,
+                [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
+              }}
+            >
+              {drawer}
+            </Drawer>
+            <div style={{ width: `calc(100% - ${drawerWidth}px)` }}>
+              <Routes>
+                <Route path="/" element={<><HeaderText /><PokemonListView /></>} />
+                <Route path="/grasstype" element={<DisplayByType displayType="grass" />} />
+                <Route path="/firetype" element={<DisplayByType displayType="fire" />} />
+                <Route path="/watertype" element={<DisplayByType displayType="water" />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/trymui" element={<TryMui />} />
+                <Route path="/muinew" element={<MuiNew />} />
+                <Route path="/dataview" element={<DataView />} />
+                <Route path="/pokemontable" element={<PokemonTable />} />
+                <Route path="/favoritepokemons" element={<MyFavoritePokemons />} />
+              </Routes>
+            </div>
           </div>
-        </div>
+        </FavoritesProvider>
       </PokemonDataContext.Provider>
     </Router>
   );

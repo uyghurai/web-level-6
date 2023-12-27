@@ -4,10 +4,10 @@ import { DataGrid } from '@mui/x-data-grid';
 import { PokemonDataContext } from '../PokemonDataContext'
 
 const columns = [
-    { field: 'num', headerName: 'Number', width: 90 },
-    { field: 'name', headerName: 'Name', width: 150 },
-    { field: 'height', headerName: 'Height', width: 90 },
-    { field: 'weight', headerName: 'Weight', width: 90 },
+    { field: 'num', headerName: 'Pokemon Number', width: 150 },
+    { field: 'name', headerName: 'Pokemon Name', width: 250 },
+    { field: 'height', headerName: 'Pokemon Height', width: 190 },
+    { field: 'weight', headerName: 'Pokemon Weight', width: 190 },
     {
         field: 'type', headerName: 'Types', width: 150,
         valueGetter: (params) =>
@@ -15,12 +15,12 @@ const columns = [
     },
 ]
 export default function PokemonTable() {
-    const rows = useContext(PokemonDataContext);
+    const allPokemons = useContext(PokemonDataContext);
     return (
         <div>
             <Box sx={{ height: 900, width: '100%' }}>
                 <DataGrid
-                    rows={rows}
+                    rows={allPokemons}
                     columns={columns}
                     initialState={{
                         pagination: {
