@@ -76,7 +76,7 @@ function App() {
           <ListItemIcon sx={{ color: "#FF9800" }}>
             {<Favorite />}
           </ListItemIcon>
-          <ListItemText primary="Pokemon Table" />
+          <ListItemText primary="My Favorites" />
         </ListItemButton>
         <ListItemButton component={Link} to="/about">
           <ListItemIcon sx={{ color: "#212121" }}>
