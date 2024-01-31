@@ -8,17 +8,14 @@ import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import './PokemonCard.css'
-import { useFavorites } from '../FavoritesContext'
 
-export default function PokemonCardMUI({ pokemon, onClick, onFavoriteClick }) {
-    const { isFavorite } = useFavorites();
+export default function PokemonCardMUI({ pokemon, onClick, onFavoriteClick, isFavorite }) {
     const className = pokemon.type.map(
         (type, index) => 'type-' + type.toLowerCase())
         .join(' '),
         paddedId = '#' + pokemon.id.toString().padStart(3, '000'),
         imgURL = pokemon.img;
 
-    const favoriteStatus = isFavorite(pokemon);
     return (
         <div className="card-container">
             <Card sx={{ maxWidth: 345 }} className={`card ${className}`}>
@@ -37,9 +34,11 @@ export default function PokemonCardMUI({ pokemon, onClick, onFavoriteClick }) {
                     <div className="pokemon-types">
                         {
                             pokemon.type.map((type, index) => (
-                                <><span key={index} className="type">
-                                    {type}
-                                </span><span> </span></>
+                                <React.Fragment key={index}>
+                                    <span className="type">
+                                        {type}
+                                    </span><span> </span>
+                                </React.Fragment>
                             ))
                         }
                     </div>
@@ -47,7 +46,7 @@ export default function PokemonCardMUI({ pokemon, onClick, onFavoriteClick }) {
                 <CardActionArea>
 
                     <IconButton aria-label="add to favorites" onClick={() => onFavoriteClick(pokemon)}>
-                        <FavoriteIcon style={{ color: favoriteStatus ? '#FF9800' : 'default' }} />
+                        <FavoriteIcon style={{ color: isFavorite ? '#D24545' : '#A9A9A9' }} />
                     </IconButton>
 
                     <IconButton aria-label="share">

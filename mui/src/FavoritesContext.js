@@ -1,20 +1,29 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const FavoritesContext = createContext();
 
 export const useFavorites = () => useContext(FavoritesContext);
 
 export const FavoritesProvider = ({ children }) => {
-    const [favorites, setFavorites] = useState([]); // storing favorite pokemons in the array
+    const [favorites, setFavorites] = useState(() => {
+        const storedFavorites = localStorage.getItem('favorites');
+        return storedFavorites ? JSON.parse(storedFavorites) : [];
+    }); // storing favorite pokemons in the array
+
+
+    // Save favorites to local storage whenever it changes
+    useEffect(() => {
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }, [favorites]);
 
     const manageFavorite = (pokemon) => {
-        setFavorites(prev => {
-            if (prev.some(p => p.id === pokemon.id)) {
+        setFavorites(favorites => {
+            if (favorites.some(p => p.id === pokemon.id)) {
                 // Remove from favorites
-                return prev.filter(p => p.id !== pokemon.id);
+                return favorites.filter(p => p.id !== pokemon.id);
             } else {
                 // Add to favorites
-                return [...prev, pokemon];
+                return [...favorites, pokemon];
             }
         });
     };

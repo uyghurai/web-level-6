@@ -43,6 +43,7 @@ export default function DisplayByType({ displayType }) {
                         pokemon={pokemon}
                         onClick={() => handleClick({ pokemon })}
                         onFavoriteClick={() => handleFavoriteClick(pokemon)}
+                        isFavorite={isFavorite(pokemon)}
                     />
                 ))
             }
@@ -53,7 +54,7 @@ export default function DisplayByType({ displayType }) {
                 autoHideDuration={3000}
                 onClose={() => setSnackbarOpen(false)}
             >
-                <Alert onClose={() => setSnackbarOpen(false)} severity="success" sx={{ width: '100%' }}>
+                <Alert onClose={() => setSnackbarOpen(false)} severity="info" sx={{ width: '100%' }}>
                     {snackbarMessage}
                 </Alert>
             </Snackbar>

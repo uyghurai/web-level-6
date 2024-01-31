@@ -7,10 +7,9 @@ import Alert from '@mui/material/Alert';
 
 
 export default function MyFavoritePokemons() {
-    const { favorites } = useFavorites(); // Access the favorites from context
     const [isHidden, setIsHidden] = useState(true);
     const [selectedPokemon, setSelectedPokemon] = useState(null);
-    const { manageFavorite, isFavorite } = useFavorites();
+    const { manageFavorite, isFavorite, favorites } = useFavorites();
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
 
@@ -38,7 +37,7 @@ export default function MyFavoritePokemons() {
                     pokemon={pokemon}
                     onClick={() => handleClick({ pokemon })}
                     onFavoriteClick={() => handleFavoriteClick(pokemon)}
-                // handle onClick and onFavoriteClick differently here
+                    isFavorite={isFavorite(pokemon)}
                 />
             ))}
             <Snackbar
@@ -47,7 +46,7 @@ export default function MyFavoritePokemons() {
                 autoHideDuration={3000}
                 onClose={() => setSnackbarOpen(false)}
             >
-                <Alert onClose={() => setSnackbarOpen(false)} severity="success" sx={{ width: '100%' }}>
+                <Alert onClose={() => setSnackbarOpen(false)} severity="info" sx={{ width: '100%' }}>
                     {snackbarMessage}
                 </Alert>
             </Snackbar>

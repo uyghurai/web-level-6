@@ -21,7 +21,7 @@ import {
   Grass,
   LocalFireDepartment,
   WaterDrop,
-  Info, TableChart, Favorite
+  Info, TableChart, Favorite, Bolt
 } from "@mui/icons-material";
 import PokemonTable from './components/PokemonTable';
 import { FavoritesProvider } from './FavoritesContext';
@@ -65,6 +65,18 @@ function App() {
             {<WaterDrop />}
           </ListItemIcon>
           <ListItemText primary="Water Type" />
+        </ListItemButton>
+        <ListItemButton component={Link} to="/bugtype">
+          <ListItemIcon sx={{ color: "#609FB5" }}>
+            {<WaterDrop />}
+          </ListItemIcon>
+          <ListItemText primary="Bug Type" />
+        </ListItemButton>
+        <ListItemButton component={Link} to="/electrictype">
+          <ListItemIcon sx={{ color: "#609FB5" }}>
+            {<Bolt />}
+          </ListItemIcon>
+          <ListItemText primary="Electric Type" />
         </ListItemButton>
         <ListItemButton component={Link} to="/pokemontable">
           <ListItemIcon sx={{ color: "#F8C471" }}>
@@ -123,6 +135,8 @@ function App() {
                 <Route path="/grasstype" element={<DisplayByType displayType="grass" />} />
                 <Route path="/firetype" element={<DisplayByType displayType="fire" />} />
                 <Route path="/watertype" element={<DisplayByType displayType="water" />} />
+                <Route path="/bugtype" element={<DisplayByType displayType="bug" />} />
+                <Route path="/electrictype" element={<DisplayByType displayType="electric" />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/trymui" element={<TryMui />} />
                 <Route path="/muinew" element={<MuiNew />} />
